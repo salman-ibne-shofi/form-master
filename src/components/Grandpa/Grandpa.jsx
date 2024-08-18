@@ -3,18 +3,27 @@ import Dad from "../Dad/Dad";
 import Uncle from "../Uncle/Uncle";
 import "./Grandpa.css";
 
+const AssetContext = creatContext("gold");
+
 const Grandpa = () => {
 	const asset = "diamond";
 	return (
 		<div className="grandpa">
 			<h2>Grandpa</h2>
-			<section className="flex">
+			<AssetContext.Provider value='gold'>
+            <section className="flex">
 				<Dad asset={asset}></Dad>
-				<Uncle></Uncle>
+				<Uncle asset={asset}></Uncle>
 				<Aunty></Aunty>
 			</section>
+            </AssetContext.Provider>
 		</div>
 	);
 };
 
 export default Grandpa;
+
+/**
+ * 1. creat a context and export it
+ * 2. add provider for the context with a value
+ */
